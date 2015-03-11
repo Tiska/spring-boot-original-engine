@@ -12,7 +12,6 @@
       <entry name="!?*.flex" />
       <entry name="!?*.kt" />
       <entry name="!?*.clj" />
-      <entry name="!?*.aj" />
     </wildcardResourcePatterns>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="false">
@@ -23,7 +22,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="gae-demo" />
         <module name="spring-boot-legacy" />
         <module name="spring-boot-sample-gae" />
       </profile>
@@ -34,3 +32,4 @@
     </bytecodeTargetLevel>
   </component>
 </project>
+

@@ -1,7 +1,7 @@
 package demo;
 
 
-import demo.service.BddConnection;
+import demo.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @Autowired
-    BddConnection service;
+	ClientService service;
 
     @RequestMapping("/")
     public String index(Model model) {
