@@ -1,11 +1,13 @@
 package demo.service;
 
 
-
-
 import demo.bean.Client;
 import org.springframework.stereotype.Component;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,16 +40,45 @@ public class ClientService {
 
     };
 
-    public List<Client> getClients (){
+//    public List<Client> getClients (){
+//		List<Client> clients = new ArrayList<>();
+//
+//		List<demo.persistence.beans.biz.Client> clientsBiz  = demo.persistence.beans.biz.Client.getList();
+//
+//		for(demo.persistence.beans.biz.Client client : clientsBiz){
+//			clients.add(new Client(client.getNom(),client.getPrenom()));
+//		}
+//
+//        return clients;
+//    };
+
+	public List<Client> getClients (){
 		List<Client> clients = new ArrayList<>();
 
-		List<demo.persistence.beans.biz.Client> clientsBiz  = demo.persistence.beans.biz.Client.getList();
-
-		for(demo.persistence.beans.biz.Client client : clientsBiz){
-			clients.add(new Client(client.getNom(),client.getPrenom()));
+		String url = null;
+		try {
+			Class.forName("com.mysql.jdbc.GoogleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
+		url = "jdbc:google:mysql://model-folio-87421:spring-boot-demo-bdd/demoSchema?user=root";
 
-        return clients;
-    };
+		Connection conn = null;
+		try {
+			try {
+				conn = DriverManager.getConnection(url);
+				ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM CLIENT");
+
+				while (rs.next()) {
+					clients.add(new Client(rs.getString("NOM"), rs.getString("PRENOM")));
+				}
+			} finally {
+				conn.close();
+			}
+		}	catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return clients;
+	};
 
 }

@@ -7,7 +7,7 @@
 <body>
 <div style="text-align: center">
     <h1>Bienvenue sur le Spring boot app engine de Steamulo !</h1>
-    <img src="X:\workspace\spring-boot-sample-gae\src\main\resources\templates\steam_grand.png" th:src="@{resources\templates\steam_grand.png}" alt="Sponsored by Steamulo" />
+    <!--<img src="X:\workspace\spring-boot-sample-gae\src\main\resources\templates\steam_grand.png" th:src="@{resources\templates\steam_grand.png}" alt="Sponsored by Steamulo" />-->
 </div>
 <!--<div style="text-align: center">-->
 <!--<h1>Ajouter un client</h1>-->
@@ -17,7 +17,7 @@
     <h1>Liste des clients</h1>
     <ul th:each="client : ${clients}">
         <li>
-            <span th:text="${client.nom}"></span><span th:text="${client.prenom}"></span>
+            <span th:text="${client.nom}"></span> <span th:text="${client.prenom}"></span>
         </li>
     </ul>
 </div>
